@@ -1,0 +1,109 @@
+:root {
+  --bs-primary: #ff5733;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --color-primary-black: #000000;
+  --color-primary-white: #ffffff;
+  --color-primary-red: #c8102e;
+  --color-secondary-yellow-100: #ffe1a5;
+  --color-secondary-yellow-200: #ffd580;
+  --color-secondary-blue-100: #c6effc;
+  --color-secondary-blue-200: #a0e0ef;
+  --color-secondary-green-100: #bde9c9;
+  --color-secondary-green-200: #98d1b5;
+  --color-secondary-orange-100: #ffaf80;
+  --color-secondary-orange-200: #ff9966;
+
+  --color-bg: var(--color-primary-black);
+  --color-text: var(--color-primary-white);
+  --color-catagory-yellow-foreground: var(--color-secondary-yellow-100);
+  --color-catagory-yellow-background: var(--color-secondary-yellow-200);
+  --color-catagory-blue-foreground: var(--color-secondary-blue-100);
+  --color-catagory-blue-background: var(--color-secondary-blue-200);
+  --color-catagory-green-foreground: var(--color-secondary-green-100);
+  --color-catagory-green-background: var(--color-secondary-green-200);
+  --color-catagory-orange-foreground: var(--color-secondary-orange-100);
+  --color-catagory-orange-background: var(--color-secondary-orange-200);
+
+  --font-sans: 'Lato', sans-serif;
+  --font-serif: 'Source Serif 4', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-serif);
+}
+
+a {
+  color: var(--color-primary-red);
+}
+
+header {
+  margin-bottom: 50vh;
+}
+
+h1 {
+  font-family: var(--font-sans);
+  color: var(--color-primary-red);
+}
+
+figure {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+}
+
+article {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#viz-wrapper {
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+
+.step {
+  min-height: 90vh;
+  /* max-width: 800px; */
+  .step-bg {
+    border-radius: 0.25rem;
+    border: 1px solid #2c2c2c;
+    background-color: rgba(44, 44, 44, 0.4);
+    backdrop-filter: blur(4px);
+    border-image-source: linear-gradient(
+      160deg,
+      rgba(44, 44, 44, 0.4),
+      rgba(44, 44, 44, 0)
+    );
+    border-image-slice: 1;
+    padding: 1rem;
+  }
+
+  .step-text {
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.01013rem;
+  }
+}
