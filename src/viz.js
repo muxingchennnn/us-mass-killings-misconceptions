@@ -19,29 +19,44 @@ d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
   const margin = { top: 10, left: 10, right: 10, bottom: 10 }
   const numberOfSquaresRow = 15
   const numberOfSquaresCol = Math.ceil(schoolData.length / numberOfSquaresRow)
-  const squareSize = 20
+  const squareSize = Math.min(
+    (height - margin.top - margin.bottom) /
+      (Math.ceil(overallData.length / numberOfSquaresRow) + 2),
+    (width - margin.left - margin.right) / (numberOfSquaresRow * 4 + 3)
+  )
+
+  console.log(Math.ceil(publicData.length / numberOfSquaresRow))
+  console.log(
+    (height - margin.top - margin.bottom) /
+      Math.ceil(publicData.length / numberOfSquaresRow)
+  )
+  console.log(
+    (width - margin.left - margin.right) / (numberOfSquaresRow * 4 + 3)
+  )
   const gap = 0
+  const gapBetweenSections = squareSize * 1
 
   const waffleWidth =
     squareSize * numberOfSquaresRow + numberOfSquaresRow * gap + squareSize
   const waffleHeight =
     squareSize * numberOfSquaresCol + numberOfSquaresCol * gap + squareSize
 
-  const svg = d3.select('#viz').attr('width', width).attr('height', height)
-  // .attr('viewBox', [
-  //   0,
-  //   0,
-  //   margin.left + margin.right + waffleWidth,
-  //   margin.top + margin.bottom + waffleHeight,
-  // ])
-  // .attr('style', 'max-width: 100%; height: auto;')
+  const svg = d3
+    .select('#viz')
+    .attr('width', width)
+    .attr('height', height)
+    .attr('viewBox', `0, 0, ${width}, ${height}`)
+    .attr('preserveAspectRatio', 'xMidYMid meet')
+    .style('width', '100%')
+    .style('height', 'auto')
+    .style('margin', '0 auto')
 
   // School Section
   const schoolSection = svg
     .append('g')
     .attr(
       'transform',
-      `translate( ${margin.left}, ${height - waffleHeight - margin.bottom} )`
+      `translate( ${margin.left}, ${height - margin.bottom - 2 * squareSize} )`
     )
 
   const schoolShade = schoolSection
@@ -50,7 +65,7 @@ d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
     .selectAll('.rect')
     .data(schoolData)
     .join('rect')
-    .attr('class', 'rect')
+    .attr('class', 'rect school-rect')
     .attr('width', squareSize)
     .attr('height', squareSize)
     .attr('y', (d, i) => {
@@ -98,9 +113,9 @@ d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
     .append('g')
     .attr(
       'transform',
-      `translate( ${margin.left + (3 + numberOfSquaresRow) * squareSize}, ${
-        height - waffleHeight - margin.bottom
-      } )`
+      `translate( ${
+        margin.left + (gapBetweenSections + numberOfSquaresRow * squareSize)
+      }, ${height - margin.bottom - 2 * squareSize} )`
     )
 
   const publicShade = publicSection
@@ -157,9 +172,9 @@ d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
     .append('g')
     .attr(
       'transform',
-      `translate( ${margin.left + (3 + numberOfSquaresRow) * squareSize * 2}, ${
-        height - waffleHeight - margin.bottom
-      } )`
+      `translate( ${
+        margin.left + (gapBetweenSections + numberOfSquaresRow * squareSize) * 2
+      }, ${height - margin.bottom - 2 * squareSize} )`
     )
 
   const familyShade = familySection
@@ -216,9 +231,9 @@ d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
     .append('g')
     .attr(
       'transform',
-      `translate( ${margin.left + (3 + numberOfSquaresRow) * squareSize * 3}, ${
-        height - waffleHeight - margin.bottom
-      } )`
+      `translate( ${
+        margin.left + (gapBetweenSections + numberOfSquaresRow * squareSize) * 3
+      }, ${height - margin.bottom - 2 * squareSize} )`
     )
 
   const overallShade = overallSection

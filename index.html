@@ -19,31 +19,74 @@
       crossorigin="anonymous"
     />
     <script
+      defer
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
     <!-- stylesheets -->
+    <link rel="stylesheet" type="text/css" href="./src/font.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="./src/bootstrap.css" /> -->
     <link rel="stylesheet" type="text/css" href="./src/style.css" />
-    <link rel="stylesheet" type="text/css" href="./src/weepeople.css" />
     <!-- external libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-    <script src="https://unpkg.com/scrollama"></script>
-    <script src="https://cdn.jsdelivr.net/gh/khushit-shah/WriteIt.js@version/writeit.min.js"></script>
-    <script src="https://unpkg.com/browse/tiny-typewriter@latest/dist/tinyTypewriter.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script defer src="https://unpkg.com/scrollama"></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"
+    ></script>
+    <script defer src="https://unpkg.com/shuffle-letters"></script>
   </head>
   <body>
-    <header>
-      <h1>Mass killings look different than you think.</h1>
-      <p>
+    <header class="text-center">
+      <h1 class="">
+        Mass killings look <span class="shuffle-letters">different</span> than
+        you think.
+      </h1>
+      <h2 class="">
         Dominant coverage surrounding school shootings has led a large portion
         of the population to live in fear, resulting in the hyper-securitization
         of schools.
-      </p>
-      <p id="typewritter">But what does the data actually say?</p>
+      </h2>
+      <h2 id="typewritter" class="">But what does the data actually say?</h2>
+      <video
+        id="background-video"
+        autoplay
+        muted
+        playsinline
+        loop
+        preload="auto"
+      >
+        <source src="./assets/bg-video.mp4" type="video/mp4" />
+      </video>
     </header>
 
     <main>
+      <section id="static-text">
+        <article>
+          <p>
+            Picture this: You’re a ninth grader attending a high school in
+            Miami, Florida. <br /><br />
+            Every morning, you have to pass through a metal detector and let
+            campus security go through your backpack to get inside. Twice a
+            year, your school holds active shooter drills, simulations which
+            include gunshot noises and fake wounds. Some of your teachers carry
+            guns to school. On the drive to school, it’s not uncommon for you to
+            feel anxious that something bad will happen to you.
+          </p>
+          <p>
+            This is the experience of many students today. The majority of
+            states currently mandate schools to have some form of active shooter
+            preparedness, and over 95% of schools in the United States reported
+            having a written plan, per the Department of Education.
+          </p>
+          <p>
+            In reality, of the 613 mass killings (killings that left four or
+            more people dead) that have taken place since 2006, only 14 of them
+            were in schools. <br /><br />Let’s take a look at the data.
+          </p>
+        </article>
+      </section>
       <section id="scrolly">
         <figure>
           <!-- a `figure` is a useful wrapper around images and captions -->
@@ -60,112 +103,140 @@
         <article>
           <div class="step" data-step="0">
             <p class="step-bg step-text">
-              Picture this: You’re a ninth grader attending a high school in
-              Miami, Florida. <br /><br />
-              Every morning, you have to pass through a metal detector and let
-              campus security go through your backpack to get inside. Twice a
-              year, your school holds active shooter drills, simulations which
-              include gunshot noises and fake wounds. Some of your teachers
-              carry guns to school. On the drive to school, it’s not uncommon
-              for you to feel anxious that something bad will happen to you.
+              Since 2006, there have been 14 mass killings in <span class="inline-highlight" style="background-color: var(--color-secondary-orange-500);  color: var(--color-secondary-orange-100);">schools</span>, resulting in 157 deaths.
             </p>
           </div>
           <div class="step" data-step="1">
             <p class="step-bg step-text">
-              This is the experience of many students today. The majority of
-              states currently mandate schools to have some form of active
-              shooter preparedness, and over 95% of schools in the United States
-              reported having a written plan, per the Department of Education.
-              Many teachers and students have expressed feeling traumatized by
-              these drills. In 17 states, teachers or employees are allowed to
-              carry guns on school campuses as a “safety measure,” though
-              activists have denounced this approach as dangerous. Even so,
-              these in-school policies are informed by a national panic in
-              response to what many have called an “epidemic.”
+              However, compared to 113 mass killings in <span class="inline-highlight" style="background-color: var(--color-secondary-blue-500);  color: var(--color-secondary-blue-100);">public</span> settings, which caused 919 fatalities, and 295 <span class="inline-highlight" style="background-color: var(--color-secondary-green-500);  color: var(--color-secondary-green-100);">family</span> mass killings, which claimed 1,334 lives, school-related incidents have had a relatively smaller impact.
             </p>
           </div>
-          <div class="step" data-step="2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            doloremque fugit nam voluptates dolorem praesentium minus placeat,
-            nobis reiciendis expedita rem. Quaerat inventore neque doloribus!
-            Eligendi sequi aspernatur debitis aliquam?
-          </div>
-          <div class="step" data-step="3">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, vitae
-            et. Soluta, cupiditate, tempora laboriosam eveniet modi totam
-            quisquam suscipit facilis quibusdam culpa laudantium libero, sed
-            nemo quo officia dolores?
-          </div>
-          <div class="step" data-step="4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, totam
-            enim corporis expedita exercitationem repudiandae pariatur
-            dignissimos voluptas accusantium! Velit, perferendis mollitia.
-            Voluptates sed perspiciatis necessitatibus voluptatibus, eligendi
-            exercitationem illo.
-          </div>
-          <div class="step" data-step="5">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque nam
-            dolorum accusantium? Laborum error vitae quod odio tempore commodi
-            nihil, incidunt quia excepturi quidem, possimus dicta exercitationem
-            libero, cupiditate quos.
-          </div>
-          <div class="step" data-step="6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas et
-            rem quidem dolorum, eveniet ut sint iste ducimus quam sed facilis
-            quas. Cupiditate praesentium corporis tempore quos atque nisi minus.
-          </div>
+        </article>
+      </section>
+      <section>
+        <article>
+          <p>
+            As you can see, although school shootings are awful, they’re also relatively rare. The fear surrounding school shootings has been inflated for a few reasons, according to James Alan Fox, a professor of criminology, law, and public policy at Northeastern University. Fox created the Mass Killing Database to dispel common misconceptions about mass killings in the United States. 
+          </p>
+          <p>First of all, the way mass shootings are defined differ depending on the source — some databases, like the Gun Violence Archive, define mass shootings as incidents where four or more people were shot rather than shot and killed, which results in much higher numbers. Similarly, the K-12 School Shooting Database defines school shootings as any shootings that took place at a school, regardless of whether the shooting occurred inside the school or during school hours. This results in data that claims there are around 300 school shootings a year, an alarming statistic that is certainly cause for panic. 
+          </p>
+          <p>
+            “When people hear hundreds of school shootings, they think, ‘we need to have more security inside school and more lockdown drills,’” Fox said. “But most of them have nothing to do with the school. They just happen to be on school property.”</p>
+          <p>That’s why Fox thinks resources should be going elsewhere — toward making schools safer and more welcoming environments for students. </p>
+          <p>“We need to focus a lot more on school psychologists, guidance counselors, smaller classes, just so that kids don’t fall through the cracks,” he said. “Those things help a lot. Will they prevent a school shooter? Maybe not, but they’ll certainly help millions of kids who could benefit from smaller classes and help within schools.”</p>
+          <p>Let’s return to our ninth grader in Miami — what if that student went to school in a place that didn’t feel like a disaster waiting to happen? What if they went to school on a campus blissfully free of armed campus police? What if they went to a school in an environment where they felt safe enough to report any kind of trouble they may be facing at home to their guidance counselor? </br></br>Wouldn’t that be much more safe?
+          </p>
+          <p>Since the large majority of mass killing is committed by family members, prevention approaches that would actually provide more safety are rooted in family-focused, holistic care. </p>
+          <p>Take a look at the resources below for violence prevention approaches that are more promising:</p>
+          <p>The National Council on Family Relations has collected a list of practical resources to help individuals and families cope in the aftermath of a large-scale violent event, such as a shooting or other form of mass violence or terrorism: (https://www.ncfr.org/resources/resource-collections/coping-wake-shootings-mass-violence-and-terrorism)
+          </p>
+          <p>The National Domestic Violece Hotline provides useful advice in how to support children who experience family violence: (https://www.thehotline.org/plan-for-safety/supporting-your-children/)
+
+          </p>
+          <p>The National Child Traumatic Stress Network has fact sheets, webinars, and other resources aimed to help children affected by mass violence, including school shootings and community violence (https://www.nctsn.org/what-is-child-trauma/trauma-types/terrorism-and-violence/mass-violence)</p>
+          <p>The Centers for Disease Control provides educational materials and information on public health prevention approaches for many different types of violence: (https://www.cdc.gov/violence-prevention/index.html)</p>
+          <p>Parents for Peace is an organization operates the nation’s first and only free, confidential intervention helpline for families and friends wanting to address potentially violent beliefs and behaviors in their loved ones (https://www.parents4peace.org/) </p>
+          <p>Sandy Hook Promise aims to empower and educate young people and adults to recognize, intervene, and get help for individuals who may be socially isolated and/or at risk of hurting themselves or others: (https://www.sandyhookpromise.org/) </p>
         </article>
       </section>
     </main>
     <footer>
       <div class="container">
-        <div class="row">
-          <div class="col-6">
-            <p>
-              A ❤️ story by Muxing Chen, Juliana George, and Enryka Christopher
-              at
-              <a
-                href="https://www.northeastern.edu/"
-                class="link-primary link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
-                >Northeastern University</a
-              >.
-              <br />
-              Source code on
-              <a href="https://github.com/dataculturegroup/our-cup">GitHub</a>.
-              <br />
-              <a
-                href="https://twitter.com/intent/tweet?screen_name=rahulbot"
-                class="twitter-mention-button"
-                data-size="large"
-                data-dnt="true"
-                >Tweet to @rahulbot</a
-              >.
-              <br />
-              <a href="https://vis.social/@rahulbot"
-                >Toot to @rahulbot@vis.social</a
-              >.
-            </p>
+        <div class="row gy-2">
+          <div class="col-12 col-md-6">
+            <div class="footer-content grid-bg">
+              <p>
+                A story made with ❤️ by Muxing Chen, Juliana George, and Enryka
+                Christopher at
+                <a
+                  href="https://www.northeastern.edu/"
+                  class="link-primary link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover"
+                  >Northeastern University</a
+                >.
+                <br />
+                Source code on
+                <a href="https://github.com/dataculturegroup/our-cup">GitHub</a
+                >.
+                <br />
+                <a
+                  href="https://twitter.com/intent/tweet?screen_name=rahulbot"
+                  class="twitter-mention-button"
+                  data-size="large"
+                  data-dnt="true"
+                  >Tweet to @rahulbot</a
+                >.
+                <br />
+                <a href="https://vis.social/@rahulbot"
+                  >Toot to @rahulbot@vis.social</a
+                >.
+              </p>
+            </div>
           </div>
-          <div class="col-6">
-            <p>
-              Credits: <br />
-              - &nbsp;James Alan Fox, Mass Killing Database <br />
-              - &nbsp;USA Today, Mass killing database: Revealing trends,
-              details and anguish of every US event since 2006 <br />
-              - &nbsp;AP News, A look at mass killings in the U.S. <br />
-              <a
-                class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                style="color: var(--color-text)"
-                href="https://getbootstrap.com/docs/5.3/utilities/link/#link-opacity"
-              >
-                Underline opacity 0
-              </a>
-            </p>
+          <div class="col-12 col-md-6">
+            <div class="footer-content grid-bg">
+              <p>
+                Credits: <br />
+                -
+                <a
+                  href="https://cssh.northeastern.edu/sccj/mass-killing-database/"
+                  >&nbsp;James Alan Fox,
+                  <span class="credit-title">Mass Killing Database</span></a
+                >
+                <br />
+                -
+                <a
+                  href="https://www.usatoday.com/in-depth/graphics/2022/08/18/mass-killings-database-us-events-since-2006/9705311002/"
+                  >&nbsp;USA Today,
+                  <span class="credit-title"
+                    >Mass killing database: Revealing trends, details and
+                    anguish of every US event since 2006
+                  </span></a
+                >
+                <br />
+                -
+                <a
+                  href="https://projects.apnews.com/features/2023/mass-killings/index.html"
+                  >&nbsp;AP News,
+                  <span class="credit-title"
+                    >A look at mass killings in the U.S.</span
+                  ></a
+                >
+                <br />
+                -
+                <a href="https://github.com/propublica/weepeople/tree/master">
+                  &nbsp;Scott Klein,
+                  <span class="credit-title">Wee People Font</span></a
+                >
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </footer>
+    <!-- <script>
+      function loadVisualization() {
+        // Remove any existing visualization script
+        const existingScript = document.querySelector('script[data-viz-script]');
+        if (existingScript) {
+          existingScript.remove();
+        }
+
+        // Create and append the appropriate script based on window width
+        const script = document.createElement('script');
+        script.setAttribute('type', 'module');
+        script.setAttribute('data-viz-script', '');
+        script.src = window.innerWidth <= 576 ? '/src/viz-mobile.js' : '/src/viz.js';
+        document.body.appendChild(script);
+      }
+
+      // Initial load
+      loadVisualization();
+
+      // Listen for window resize
+      window.addEventListener('resize', loadVisualization);
+    </script> -->
     <script type="module" src="/src/main.js"></script>
-    <script type="module" src="/src/viz.js"></script>
+    <!-- <script type="module" src="/src/viz.js"></script> -->
+    <script type="module" src="/src/viz-mobile.js"></script>
   </body>
 </html>
