@@ -83,7 +83,10 @@ body {
 }
 
 a {
-  color: var(--color-primary-red);
+  color: var(--color-text);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  /* text-decoration: none; */
 }
 
 header {
