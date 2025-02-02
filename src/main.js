@@ -8,6 +8,16 @@ document.addEventListener('DOMContentLoaded', function () {
   video.playbackRate = 0.8 // Set the playback speed to 1.5x
 })
 
+let typewriter = new Typewriter('#typewriter', {
+  // loop: true,
+  delay: 75,
+})
+
+typewriter
+  .pauseFor(2000)
+  .typeString('But what does the data actually say?')
+  .start()
+
 const schoolDataLength = 14
 const publicDataLength = 123
 const familyDataLength = 295

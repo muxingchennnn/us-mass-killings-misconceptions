@@ -1,7 +1,34 @@
 import { randomLetter } from './randomLetter.js'
 
-const width = window.innerWidth
-const height = window.innerHeight
+let width = window.innerWidth
+let height = window.innerHeight
+
+let numberOfSquaresRow = getNumberOfSquares()
+let schoolData
+let publicData
+let familyData
+let overallData
+let resizeTimeout
+
+// Function to determine number of squares
+function getNumberOfSquares() {
+  return window.innerWidth > 576 ? 25 : 20
+}
+
+window.addEventListener('resize', () => {
+  // Clear the SVG content at the start of the resize
+  d3.select('#viz').selectAll('*').remove()
+
+  // Clear the previous timeout
+  clearTimeout(resizeTimeout)
+
+  // Set a new timeout to redraw the SVG after resizing ends
+  resizeTimeout = setTimeout(() => {
+    numberOfSquaresRow = getNumberOfSquares()
+    draw(overallData, numberOfSquaresRow)
+    console.log(numberOfSquaresRow)
+  }, 100)
+})
 
 d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
   data.forEach(function (d) {
@@ -9,14 +36,16 @@ d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
     d.num_victims_killed = +d.num_victims_killed
   })
 
-  const schoolData = data.filter((d) => d.location_type === 'School/College')
-  const publicData = data.filter((d) => d.type === 'Public')
-  const familyData = data.filter((d) => d.type === 'Family')
-  const overallData = data
-  console.log(data)
+  schoolData = data.filter((d) => d.location_type === 'School/College')
+  publicData = data.filter((d) => d.type === 'Public')
+  familyData = data.filter((d) => d.type === 'Family')
+  overallData = data
 
+  draw(overallData, numberOfSquaresRow)
+})
+
+function draw(data, numberOfSquaresRow) {
   const margin = { top: 10, left: 10, right: 10, bottom: 10 }
-  const numberOfSquaresRow = 20
   const numberOfSquaresCol = Math.ceil(overallData.length / numberOfSquaresRow)
   const squareSize = Math.min(
     (height - margin.top - margin.bottom) /
@@ -24,7 +53,6 @@ d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
     (width - margin.left - margin.right) / (numberOfSquaresRow + 2)
   )
   const gap = 0
-  // const gapBetweenSections = squareSize * 1
 
   const waffleWidth =
     squareSize * numberOfSquaresRow + numberOfSquaresRow * gap + squareSize
@@ -41,12 +69,11 @@ d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
     .style('height', 'auto')
     .style('margin', '0 auto')
 
-  // School Section
-  const schoolSection = svg
+  const waffleChart = svg
     .append('g')
     .attr('transform', `translate( ${margin.left}, ${margin.top} )`)
 
-  const schoolShade = schoolSection
+  const cellShade = waffleChart
     .append('g')
     .attr('class', 'rects')
     .selectAll('.rect')
@@ -85,7 +112,7 @@ d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
     .attr('stroke', 'var(--color-bg)')
     .attr('stroke-width', '4px')
 
-  const schoolGrid = schoolSection
+  const cellSymbol = waffleChart
     .append('g')
     .attr('transform', `translate( ${squareSize / 2}, ${squareSize / 2} )`)
     .attr('class', 'icons')
@@ -126,4 +153,4 @@ d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
     .on('mouseover', (e, d) => {
       console.log(d)
     })
-})
+}
