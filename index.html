@@ -216,31 +216,7 @@
         </div>
       </div>
     </footer>
-    <!-- <script>
-      function loadVisualization() {
-        // Remove any existing visualization script
-        const existingScript = document.querySelector('script[data-viz-script]');
-        if (existingScript) {
-          existingScript.remove();
-        }
-
-        // Create and append the appropriate script based on window width
-        const script = document.createElement('script');
-        script.setAttribute('type', 'module');
-        script.setAttribute('data-viz-script', '');
-        script.src = window.innerWidth <= 576 ? '/src/viz-mobile.js' : '/src/viz.js';
-        document.body.appendChild(script);
-      }
-
-      // Initial load
-      loadVisualization();
-
-      // Listen for window resize
-      window.addEventListener('resize', loadVisualization);
-    </script> -->
-    <script type="module" src="/src/main.js"></script>
-    <!-- <script type="module" src="/src/viz.js"></script> -->
-    <!-- <script type="module" src="/src/viz-mobile.js"></script> -->
-    <script type="module" src="/src/viz-laptop.js"></script>
+    <script defer type="module" src="/src/main.js"></script>
+    <script defer type="module" src="/src/viz-laptop.js"></script>
   </body>
 </html>
