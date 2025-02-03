@@ -1,28 +1,3 @@
-shuffleLetters(document.querySelector('.shuffle-letters'), {
-  iterations: 3,
-  fps: 10,
-})
-
-document.addEventListener('DOMContentLoaded', function () {
-  const video = document.getElementById('background-video')
-  video.playbackRate = 0.8 // Set the playback speed to 1.5x
-})
-
-let typewriter = new Typewriter('#typewriter', {
-  // loop: true,
-  delay: 75,
-})
-
-typewriter
-  .pauseFor(2000)
-  .typeString('But what does the data actually say?')
-  .start()
-
-const schoolDataLength = 14
-const publicDataLength = 123
-const familyDataLength = 295
-const overallDataLength = 613
-
 // instantiate the scrollama
 const scroller = scrollama()
 
@@ -59,7 +34,7 @@ function highlightSchoolData() {
     .transition()
     .duration(500)
     .delay((d, i) => i * 100)
-    .attr('fill', 'var(--color-catagory-orange-foreground)')
+    .attr('fill', 'var(--color-catagory-orange-background)')
 
   d3.selectAll('.school-weepeople')
     .transition()
@@ -77,7 +52,7 @@ function unhighlightSchoolData() {
   d3.selectAll('.weepeople')
     .transition()
     .duration(500)
-    .attr('fill', 'var(--color-catagory-gray-background)')
+    .attr('fill', 'var(--color-catagory-gray-foreground)')
 }
 
 function highlightOtherData() {
@@ -95,7 +70,7 @@ function highlightOtherData() {
 
   d3.selectAll('.public-rect')
     .transition()
-    .duration(5000)
+    .duration(500)
     // .delay((d, i) => i * 10)
     .attr('fill', 'var(--color-catagory-blue-background)')
 
@@ -109,7 +84,7 @@ function highlightOtherData() {
     .transition()
     .duration(500)
     // .delay((d, i) => i * 10)
-    .attr('fill', 'var(--color-catagory-green-foreground)')
+    .attr('fill', 'var(--color-catagory-green-background)')
 
   d3.selectAll('.family-weepeople')
     .transition()
@@ -119,22 +94,15 @@ function highlightOtherData() {
 }
 
 function unhighlightOtherData() {
-  d3.selectAll('.public-rect')
+  d3.selectAll('.public-rect, .family-rect')
     .transition()
-    .duration(1000)
+    .duration(500)
     .attr('fill', 'var(--color-catagory-gray-background)')
-  d3.selectAll('.public-weepeople')
+
+  d3.selectAll('.public-weepeople, .family-weepeople')
     .transition()
-    .duration(1000)
-    .attr('fill', 'var(--color-catagory-gray-background)')
-  d3.selectAll('.family-rect')
-    .transition()
-    .duration(1000)
-    .attr('fill', 'var(--color-catagory-gray-background)')
-  d3.selectAll('.family-weepeople')
-    .transition()
-    .duration(1000)
-    .attr('fill', 'var(--color-catagory-gray-background)')
+    .duration(500)
+    .attr('fill', 'var(--color-catagory-gray-foreground)')
 }
 
 function step1() {

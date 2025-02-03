@@ -201,6 +201,18 @@ article {
   margin: 0 auto;
 }
 
+hr {
+  width: 10%;
+  margin: 4rem auto;
+  opacity: 0.75;
+}
+
+#resources {
+  .resource-title {
+    font-style: italic;
+  }
+}
+
 footer {
   font-family: var(--font-sans);
   background-color: #1e1e1e;
