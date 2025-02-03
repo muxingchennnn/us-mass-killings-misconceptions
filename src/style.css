@@ -144,7 +144,9 @@ main {
     }
 
     .step {
+      margin: 0 auto;
       min-height: 90vh;
+      max-width: 400px;
 
       .step-bg {
         border-radius: 0.25rem;
@@ -191,12 +193,12 @@ main {
 footer {
   font-family: var(--font-sans);
   background-color: #1e1e1e;
-  padding: 2rem 0;
   margin-top: 10vh;
 
   .container-fluid {
     margin: 0 auto;
-    /* min-width: 90vw; */
+    padding: 0;
+    width: 90vw;
     max-width: 800px;
   }
 
