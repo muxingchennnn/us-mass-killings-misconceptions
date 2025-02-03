@@ -16,21 +16,20 @@ function getNumberOfSquares() {
 }
 
 window.addEventListener('resize', () => {
-  // Clear the SVG content at the start of the resize
-  d3.select('#viz').selectAll('*').remove()
-
   // Clear the previous timeout
   clearTimeout(resizeTimeout)
 
   // Set a new timeout to redraw the SVG after resizing ends
   resizeTimeout = setTimeout(() => {
+    // Clear the SVG content at the start of the resize
+    d3.select('#viz').selectAll('*').remove()
     numberOfSquaresRow = getNumberOfSquares()
     draw(overallData, numberOfSquaresRow)
-    console.log(numberOfSquaresRow)
   }, 100)
 })
 
-d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
+// Load data
+d3.csv('./dataset/mass_killing_incidents.csv').then((data) => {
   data.forEach(function (d) {
     d.date = +d.date.split('-')[0]
     d.num_victims_killed = +d.num_victims_killed
@@ -44,9 +43,11 @@ d3.csv('../dataset/mass_killing_incidents.csv').then((data) => {
   draw(overallData, numberOfSquaresRow)
 })
 
+// Function to draw the visualization
 function draw(data, numberOfSquaresRow) {
   const margin = { top: 10, left: 10, right: 10, bottom: 10 }
   const numberOfSquaresCol = Math.ceil(overallData.length / numberOfSquaresRow)
+  // Calculate the size of the squares based on the screen size, and the number of squares per row/column
   const squareSize = Math.min(
     (height - margin.top - margin.bottom) /
       (Math.ceil(overallData.length / numberOfSquaresRow) + 2),
@@ -54,6 +55,7 @@ function draw(data, numberOfSquaresRow) {
   )
   const gap = 0
 
+  // Determine the width and height of the svg
   const waffleWidth =
     squareSize * numberOfSquaresRow + numberOfSquaresRow * gap + squareSize
   const waffleHeight =
@@ -69,10 +71,12 @@ function draw(data, numberOfSquaresRow) {
     .style('height', 'auto')
     .style('margin', '0 auto')
 
+  // Create a <g> element to translate the whole chart according to margins
   const waffleChart = svg
     .append('g')
     .attr('transform', `translate( ${margin.left}, ${margin.top} )`)
 
+  // Draw the rectangle shading for each cell
   const cellShade = waffleChart
     .append('g')
     .attr('class', 'rects')
@@ -112,6 +116,7 @@ function draw(data, numberOfSquaresRow) {
     .attr('stroke', 'var(--color-bg)')
     .attr('stroke-width', '4px')
 
+  // Add people icons (a font in essence) into each cell
   const cellSymbol = waffleChart
     .append('g')
     .attr('transform', `translate( ${squareSize / 2}, ${squareSize / 2} )`)
