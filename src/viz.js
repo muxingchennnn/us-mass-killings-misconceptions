@@ -1,4 +1,4 @@
-import { randomLetter } from './randomLetter.js'
+import { randomLetter } from './utilities.js'
 
 let width = window.innerWidth
 let height = window.innerHeight
