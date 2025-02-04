@@ -60,12 +60,12 @@ body {
   min-height: 100vh;
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-optical-sizing: auto;
 }
 
 a {
-  color: var(--color-text);
+  color: var(--color-primary-red);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
   /* text-decoration: none; */
@@ -122,8 +122,26 @@ main {
   margin: 0 auto;
   width: 90vw;
 
-  /* scrolly secrtion */
-  #scrolly {
+  .quote {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .blockquote {
+    background: var(--color-secondary-gray-400);
+    margin: 1rem 3rem;
+    padding: 2rem;
+    border: 2px solid var(--color-primary-red);
+    box-sizing: border-box;
+  }
+
+  .blockquote__text {
+    color: var(--color-primary-black);
+    font-weight: bold;
+  }
+
+  /* visualization secrtion */
+  #viz-section {
     margin-top: 30vh;
     margin-bottom: 20vh;
 
